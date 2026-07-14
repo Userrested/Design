@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Geometri Lingkaran</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style6.css"/>
+</head>
+<body>
+
+  <!-- CANVAS EFFECTS -->
+  <canvas id="spark-canvas" aria-hidden="true"></canvas>
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <!-- ══ NAV ══ -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-brand">
+        <svg class="nb-icon" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="16" cy="16" r="2" fill="currentColor"/>
+          <line x1="16" y1="3" x2="16" y2="16" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="29" y1="16" x2="16" y2="16" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        <span>Geometri Lingkaran</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#unsur" class="nl">Unsur</a></li>
+        <li><a href="#rumus" class="nl">Rumus Dasar</a></li>
+        <li><a href="#sudut" class="nl">Sudut</a></li>
+        <li><a href="#busur-juring" class="nl">Busur & Juring</a></li>
+        <li><a href="#garis-singgung" class="nl">Garis Singgung</a></li>
+        <li><a href="#latihan" class="nl">Latihan Soal</a></li>
+        <li><a href="#about" class="nl">About</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE DRAWER -->
+  <div class="drawer" id="drawer">
+    <ul>
+      <li><a href="#unsur" class="dl">Unsur-Unsur</a></li>
+      <li><a href="#rumus" class="dl">Rumus Dasar</a></li>
+      <li><a href="#sudut" class="dl">Sudut Pusat & Keliling</a></li>
+      <li><a href="#busur-juring" class="dl">Busur, Juring & Tali Busur</a></li>
+      <li><a href="#garis-singgung" class="dl">Garis Singgung</a></li>
+      <li><a href="#latihan" class="dl">Latihan Soal</a></li>
+      <li><a href="#about" class="dl">About</a></li>
+    </ul>
+  </div>
+  <div class="drawer-overlay" id="drawer-overlay"></div>
+
+  <!-- ══════════ HERO ══════════ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-circle" aria-hidden="true">
+      <svg viewBox="0 0 800 800" fill="none">
+        <circle cx="400" cy="400" r="380" stroke="url(#grad1)" stroke-width="0.5" opacity="0.4"/>
+        <circle cx="400" cy="400" r="300" stroke="url(#grad1)" stroke-width="0.5" opacity="0.3"/>
+        <circle cx="400" cy="400" r="200" stroke="url(#grad1)" stroke-width="0.5" opacity="0.25"/>
+        <circle cx="400" cy="400" r="100" stroke="url(#grad1)" stroke-width="0.5" opacity="0.2"/>
+        <circle cx="400" cy="400" r="6" fill="url(#grad1)" opacity="0.7"/>
+        <!-- Radii -->
+        <line x1="400" y1="400" x2="400" y2="20" stroke="url(#grad1)" stroke-width="0.8" opacity="0.3"/>
+        <line x1="400" y1="400" x2="730" y2="244" stroke="url(#grad1)" stroke-width="0.8" opacity="0.3"/>
+        <line x1="400" y1="400" x2="730" y2="556" stroke="url(#grad1)" stroke-width="0.8" opacity="0.3"/>
+        <defs>
+          <linearGradient id="grad1" x1="0" y1="0" x2="800" y2="800" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#2563eb"/>
+            <stop offset="100%" stop-color="#93c5fd"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-tag reveal">
+        <span class="tag-pill">Matematika SMA Kelas 11</span>
+      </div>
+      <h1 class="hero-title reveal delay-1">
+        Geometri<br><em>Lingkaran</em>
+      </h1>
+      <p class="hero-desc reveal delay-2">
+        Eksplorasi lengkap unsur, rumus, sudut, busur, juring, dan garis singgung lingkaran — disertai 20 soal latihan pilihan ganda.
+      </p>
+      <div class="hero-pills reveal delay-3">
+        <span class="pill">6 Topik</span>
+        <span class="pill">20 Soal</span>
+        <span class="pill">Visual Interaktif</span>
+      </div>
+      <a href="#unsur" class="btn-primary reveal delay-4">Mulai Belajar ↓</a>
+    </div>
+
+    <div class="hero-formula reveal delay-3">
+      <div class="formula-card">
+        <span class="fc-label">Keliling</span>
+        <span class="fc-eq">K = 2πr</span>
+      </div>
+      <div class="formula-card">
+        <span class="fc-label">Luas</span>
+        <span class="fc-eq">L = πr²</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ 1. UNSUR-UNSUR ══════════ -->
+  <section class="section" id="unsur">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <span class="sec-num">01</span>
+        <div>
+          <span class="sec-tag">Bagian Pertama</span>
+          <h2>Unsur-Unsur<br><em>Lingkaran</em></h2>
+        </div>
+      </div>
+
+      <div class="layout-visual">
+        <!-- SVG Visual -->
+        <div class="visual-wrap reveal">
+          <svg class="circle-svg" viewBox="0 0 420 420" fill="none" id="svg-unsur">
+            <defs>
+              <linearGradient id="gu1" x1="0" y1="0" x2="420" y2="420" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#2563eb" stop-opacity="0.15"/>
+                <stop offset="100%" stop-color="#93c5fd" stop-opacity="0.05"/>
+              </linearGradient>
+              <linearGradient id="gus" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#2563eb"/>
+                <stop offset="100%" stop-color="#60a5fa"/>
+              </linearGradient>
+            </defs>
+            <!-- Fill -->
+            <circle cx="210" cy="210" r="170" fill="url(#gu1)" stroke="#2563eb" stroke-width="1.5" opacity="0.6"/>
+            <!-- Diameter -->
+            <line x1="40" y1="210" x2="380" y2="210" stroke="#3b82f6" stroke-width="1.2" stroke-dasharray="4 3"/>
+            <!-- Radius -->
+            <line x1="210" y1="210" x2="210" y2="40" stroke="#2563eb" stroke-width="2"/>
+            <!-- Tali busur -->
+            <line x1="80" y1="120" x2="340" y2="110" stroke="#0ea5e9" stroke-width="1.5"/>
+            <!-- Apotema -->
+            <line x1="210" y1="210" x2="211" y2="115" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="3 2"/>
+            <!-- Arc highlight (busur) -->
+            <path d="M 210 40 A 170 170 0 0 1 372 270" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
+            <!-- Juring shading -->
+            <path d="M 210 210 L 210 40 A 170 170 0 0 1 350 300 Z" fill="#2563eb" fill-opacity="0.07" stroke="#2563eb" stroke-width="1" stroke-opacity="0.3"/>
+            <!-- Tembereng -->
+            <path d="M 80 120 A 170 170 0 0 0 340 110 Z" fill="#0ea5e9" fill-opacity="0.08"/>
+            <!-- Center point -->
+            <circle cx="210" cy="210" r="5" fill="#2563eb"/>
+            <!-- Labels -->
+            <text x="216" y="130" font-size="11" fill="#1d4ed8" font-family="JetBrains Mono" font-weight="500">r (Jari-jari)</text>
+            <text x="250" y="205" font-size="11" fill="#1d4ed8" font-family="JetBrains Mono">d (Diameter)</text>
+            <text x="295" y="95" font-size="11" fill="#0369a1" font-family="JetBrains Mono">Tali Busur</text>
+            <text x="138" y="108" font-size="11" fill="#7c3aed" font-family="JetBrains Mono">Apotema</text>
+            <text x="310" y="175" font-size="11" fill="#2563eb" font-family="JetBrains Mono">Busur</text>
+            <text x="260" y="280" font-size="11" fill="#2563eb" font-family="JetBrains Mono">Juring</text>
+            <text x="135" y="85" font-size="11" fill="#0ea5e9" font-family="JetBrains Mono">Tembereng</text>
+            <text x="196" y="222" font-size="10" fill="#1d4ed8" font-family="JetBrains Mono">P</text>
+          </svg>
+        </div>
+
+        <!-- Content -->
+        <div class="content-stack">
+          <div class="def-item reveal delay-1">
+            <div class="di-dot" style="--c:#2563eb"></div>
+            <div>
+              <strong>Titik Pusat (P)</strong>
+              <p>Titik yang berada tepat di tengah-tengah lingkaran. Semua titik pada lingkaran berjarak sama terhadap titik pusat.</p>
+            </div>
+          </div>
+          <div class="def-item reveal delay-2">
+            <div class="di-dot" style="--c:#3b82f6"></div>
+            <div>
+              <strong>Jari-jari (r)</strong>
+              <p>Garis lurus dari titik pusat ke titik pada keliling lingkaran.</p>
+            </div>
+          </div>
+          <div class="def-item reveal delay-3">
+            <div class="di-dot" style="--c:#0ea5e9"></div>
+            <div>
+              <strong>Diameter (d)</strong>
+              <p>Garis lurus yang menghubungkan dua titik pada keliling dan melalui titik pusat. <strong>d = 2r</strong></p>
+            </div>
+          </div>
+          <div class="def-item reveal delay-4">
+            <div class="di-dot" style="--c:#06b6d4"></div>
+            <div>
+              <strong>Busur</strong>
+              <p>Bagian dari keliling lingkaran. Ada busur minor (kecil) dan busur mayor (besar).</p>
+            </div>
+          </div>
+          <div class="def-item reveal delay-5">
+            <div class="di-dot" style="--c:#0284c7"></div>
+            <div>
+              <strong>Tali Busur</strong>
+              <p>Garis lurus yang menghubungkan dua titik pada keliling lingkaran (tidak harus melalui pusat).</p>
+            </div>
+          </div>
+          <div class="def-item reveal">
+            <div class="di-dot" style="--c:#7c3aed"></div>
+            <div>
+              <strong>Apotema</strong>
+              <p>Jarak terpendek dari titik pusat ke tali busur — selalu tegak lurus terhadap tali busur.</p>
+            </div>
+          </div>
+          <div class="def-item reveal">
+            <div class="di-dot" style="--c:#1d4ed8"></div>
+            <div>
+              <strong>Juring (Sektor)</strong>
+              <p>Daerah yang dibatasi dua jari-jari dan busur yang diapit oleh keduanya.</p>
+            </div>
+          </div>
+          <div class="def-item reveal">
+            <div class="di-dot" style="--c:#0891b2"></div>
+            <div>
+              <strong>Tembereng</strong>
+              <p>Daerah yang dibatasi sebuah tali busur dan busurnya.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ 2. RUMUS DASAR ══════════ -->
+  <section class="section section-alt" id="rumus">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <span class="sec-num">02</span>
+        <div>
+          <span class="sec-tag">Bagian Kedua</span>
+          <h2>Rumus Dasar<br><em>Lingkaran</em></h2>
+        </div>
+      </div>
+
+      <div class="layout-visual layout-rev">
+        <div class="content-stack">
+          <div class="formula-block reveal delay-1">
+            <div class="fb-header">Keliling Lingkaran</div>
+            <div class="fb-formula">K = 2 · π · r</div>
+            <div class="fb-alt">atau &nbsp; K = π · d</div>
+            <p class="fb-note">Gunakan π = 22/7 jika r/d kelipatan 7, π = 3,14 untuk bilangan lainnya.</p>
+          </div>
+          <div class="formula-block reveal delay-2">
+            <div class="fb-header">Luas Lingkaran</div>
+            <div class="fb-formula">L = π · r²</div>
+            <div class="fb-alt">atau &nbsp; L = ¼ · π · d²</div>
+          </div>
+          <div class="note-box reveal delay-3">
+            <span class="nb-icon-txt">💡</span>
+            <div>
+              <strong>Catatan Nilai π</strong>
+              <p>π = <strong>22/7</strong> → jika r atau d merupakan kelipatan 7<br>
+              π = <strong>3,14</strong> → untuk bilangan lainnya</p>
+            </div>
+          </div>
+          <!-- Quick example -->
+          <div class="example-box reveal delay-4">
+            <span class="ex-tag">Contoh</span>
+            <p>Jari-jari = 14 cm, maka:<br>
+            K = 2 × 22/7 × 14 = <strong>88 cm</strong><br>
+            L = 22/7 × 14² = <strong>616 cm²</strong></p>
+          </div>
+        </div>
+
+        <!-- SVG Visual -->
+        <div class="visual-wrap reveal">
+          <svg class="circle-svg" viewBox="0 0 420 420" fill="none">
+            <defs>
+              <radialGradient id="rg1" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#dbeafe"/>
+                <stop offset="100%" stop-color="#eff6ff"/>
+              </radialGradient>
+            </defs>
+            <circle cx="210" cy="210" r="170" fill="url(#rg1)" stroke="#3b82f6" stroke-width="2"/>
+            <!-- Dash circumference highlight -->
+            <circle cx="210" cy="210" r="170" fill="none" stroke="#2563eb" stroke-width="3" stroke-dasharray="20 8" opacity="0.5"/>
+            <!-- Radius arrow -->
+            <line x1="210" y1="210" x2="380" y2="210" stroke="#2563eb" stroke-width="2.5"/>
+            <polygon points="380,210 370,205 370,215" fill="#2563eb"/>
+            <!-- Area shading -->
+            <circle cx="210" cy="210" r="160" fill="#2563eb" fill-opacity="0.05"/>
+            <!-- Labels -->
+            <text x="270" y="205" font-size="16" fill="#1d4ed8" font-family="JetBrains Mono" font-weight="500">r</text>
+            <text x="125" y="420" font-size="12" fill="#2563eb" font-family="JetBrains Mono">K = 2πr</text>
+            <text x="140" y="225" font-size="13" fill="#1e40af" font-family="JetBrains Mono" font-weight="500">L = πr²</text>
+            <circle cx="210" cy="210" r="5" fill="#2563eb"/>
+            <!-- Pi symbol -->
+            <text x="185" y="65" font-size="28" fill="#2563eb" font-family="JetBrains Mono" opacity="0.2">π</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ 3. SUDUT ══════════ -->
+  <section class="section" id="sudut">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <span class="sec-num">03</span>
+        <div>
+          <span class="sec-tag">Bagian Ketiga</span>
+          <h2>Sudut Pusat &amp;<br><em>Sudut Keliling</em></h2>
+        </div>
+      </div>
+
+      <div class="layout-visual">
+        <!-- SVG -->
+        <div class="visual-wrap reveal">
+          <svg class="circle-svg" viewBox="0 0 420 420" fill="none">
+            <!-- Circle -->
+            <circle cx="210" cy="210" r="170" fill="#f0f7ff" stroke="#3b82f6" stroke-width="1.5"/>
+            <!-- Sudut Pusat: center O, arc A-B -->
+            <line x1="210" y1="210" x2="80" y2="100" stroke="#2563eb" stroke-width="2"/>
+            <line x1="210" y1="210" x2="340" y2="100" stroke="#2563eb" stroke-width="2"/>
+            <!-- Arc A-B -->
+            <path d="M 80 100 A 170 170 0 0 1 340 100" stroke="#2563eb" stroke-width="3" fill="none"/>
+            <!-- Sudut Pusat arc indicator -->
+            <path d="M 240 187 A 34 34 0 0 0 180 187" stroke="#2563eb" stroke-width="2" fill="none"/>
+            <!-- Sudut Keliling from point C -->
+            <circle cx="210" cy="380" r="0"/>
+            <line x1="210" y1="380" x2="80" y2="100" stroke="#0ea5e9" stroke-width="2" stroke-dasharray="5 3"/>
+            <line x1="210" y1="380" x2="340" y2="100" stroke="#0ea5e9" stroke-width="2" stroke-dasharray="5 3"/>
+            <!-- Sudut Keliling arc indicator -->
+            <path d="M 233 362 A 26 26 0 0 0 187 362" stroke="#0ea5e9" stroke-width="2" fill="none"/>
+            <!-- Points -->
+            <circle cx="210" cy="210" r="5" fill="#2563eb"/>
+            <circle cx="80" cy="100" r="4" fill="#2563eb"/>
+            <circle cx="340" cy="100" r="4" fill="#2563eb"/>
+            <circle cx="210" cy="380" r="4" fill="#0ea5e9"/>
+            <!-- Labels -->
+            <text x="196" y="223" font-size="11" fill="#1d4ed8" font-family="JetBrains Mono">O</text>
+            <text x="63" y="97" font-size="11" fill="#1d4ed8" font-family="JetBrains Mono">A</text>
+            <text x="345" y="97" font-size="11" fill="#1d4ed8" font-family="JetBrains Mono">B</text>
+            <text x="214" y="397" font-size="11" fill="#0369a1" font-family="JetBrains Mono">C</text>
+            <text x="222" y="203" font-size="10" fill="#1d4ed8" font-family="JetBrains Mono">α</text>
+            <text x="220" y="368" font-size="10" fill="#0369a1" font-family="JetBrains Mono">α/2</text>
+            <!-- Legend -->
+            <rect x="20" y="330" width="12" height="2" fill="#2563eb" rx="1"/>
+            <text x="38" y="336" font-size="10" fill="#1d4ed8" font-family="JetBrains Mono">Sudut Pusat (α)</text>
+            <rect x="20" y="348" width="12" height="2" fill="#0ea5e9" rx="1" stroke-dasharray="3 2"/>
+            <text x="38" y="354" font-size="10" fill="#0369a1" font-family="JetBrains Mono">Sudut Keliling (½α)</text>
+          </svg>
+        </div>
+
+        <div class="content-stack">
+          <div class="concept-card reveal delay-1">
+            <div class="cc-icon" style="--cc:#2563eb">∠</div>
+            <div>
+              <strong>Sudut Pusat</strong>
+              <p>Titik sudutnya di pusat lingkaran (O). Dibentuk oleh dua jari-jari.</p>
+            </div>
+          </div>
+          <div class="concept-card reveal delay-2">
+            <div class="cc-icon" style="--cc:#0ea5e9">∠</div>
+            <div>
+              <strong>Sudut Keliling</strong>
+              <p>Titik sudutnya pada keliling lingkaran. Dibentuk oleh dua tali busur.</p>
+            </div>
+          </div>
+          <div class="formula-block reveal delay-3">
+            <div class="fb-header">Hubungan (busur sama)</div>
+            <div class="fb-formula">∠ Pusat = 2 × ∠ Keliling</div>
+            <div class="fb-alt">∠ Keliling = ½ × ∠ Pusat</div>
+          </div>
+          <div class="highlight-box reveal delay-4">
+            <span class="hb-badge">Sifat Khusus</span>
+            <p>Sudut keliling yang menghadap <strong>diameter</strong> selalu bernilai <strong>90°</strong> (siku-siku).</p>
+          </div>
+          <div class="formula-block reveal delay-5">
+            <div class="fb-header">Sudut Potong di Dalam</div>
+            <div class="fb-formula">∠ = ½ × (Busur A + Busur B)</div>
+          </div>
+          <div class="formula-block reveal">
+            <div class="fb-header">Sudut Potong di Luar</div>
+            <div class="fb-formula">∠ = ½ × (Busur Besar − Busur Kecil)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ 4. BUSUR & JURING ══════════ -->
+  <section class="section section-alt" id="busur-juring">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <span class="sec-num">04</span>
+        <div>
+          <span class="sec-tag">Bagian Keempat</span>
+          <h2>Busur, Juring &amp;<br><em>Tali Busur</em></h2>
+        </div>
+      </div>
+
+      <div class="layout-visual layout-rev">
+        <div class="content-stack">
+          <p class="lead-text reveal">Semua rumus ini menggunakan <strong>perbandingan sudut pusat α terhadap 360°</strong>.</p>
+          <div class="formula-block reveal delay-1">
+            <div class="fb-header">Panjang Busur</div>
+            <div class="fb-formula">= (α / 360°) × 2πr</div>
+          </div>
+          <div class="formula-block reveal delay-2">
+            <div class="fb-header">Luas Juring</div>
+            <div class="fb-formula">= (α / 360°) × πr²</div>
+          </div>
+          <div class="formula-block reveal delay-3">
+            <div class="fb-header">Panjang Tali Busur</div>
+            <div class="fb-formula">= 2r · sin(α/2)</div>
+            <p class="fb-note">Menggunakan trigonometri — sin setengah sudut pusat.</p>
+          </div>
+          <div class="example-box reveal delay-4">
+            <span class="ex-tag">Contoh</span>
+            <p>r = 21 cm, α = 120°<br>
+            Busur = (120/360) × 2 × 22/7 × 21 = <strong>44 cm</strong><br>
+            Tali Busur = 2 × 21 × sin(60°) = <strong>21√3 cm</strong></p>
+          </div>
+        </div>
+
+        <!-- SVG -->
+        <div class="visual-wrap reveal">
+          <svg class="circle-svg" viewBox="0 0 420 420" fill="none">
+            <!-- Circle -->
+            <circle cx="210" cy="210" r="170" fill="#f0f7ff" stroke="#3b82f6" stroke-width="1.5"/>
+            <!-- Juring fill (120 deg) -->
+            <path d="M 210 210 L 210 40 A 170 170 0 0 1 357 295 Z" fill="#2563eb" fill-opacity="0.12" stroke="#2563eb" stroke-width="1.5"/>
+            <!-- Arc label segment -->
+            <path d="M 210 40 A 170 170 0 0 1 357 295" stroke="#2563eb" stroke-width="3.5" stroke-linecap="round"/>
+            <!-- Tali busur -->
+            <line x1="210" y1="40" x2="357" y2="295" stroke="#0ea5e9" stroke-width="2"/>
+            <!-- Angle arc -->
+            <path d="M 210 175 A 35 35 0 0 1 237 187" stroke="#7c3aed" stroke-width="1.5" fill="none"/>
+            <!-- Center -->
+            <circle cx="210" cy="210" r="5" fill="#2563eb"/>
+            <!-- Points -->
+            <circle cx="210" cy="40" r="4" fill="#2563eb"/>
+            <circle cx="357" cy="295" r="4" fill="#2563eb"/>
+            <!-- Labels -->
+            <text x="196" y="223" font-size="11" fill="#1d4ed8" font-family="JetBrains Mono">O</text>
+            <text x="214" y="35" font-size="11" fill="#1d4ed8" font-family="JetBrains Mono">A</text>
+            <text x="362" y="300" font-size="11" fill="#1d4ed8" font-family="JetBrains Mono">B</text>
+            <text x="225" y="182" font-size="10" fill="#7c3aed" font-family="JetBrains Mono">α</text>
+            <text x="300" y="155" font-size="11" fill="#2563eb" font-family="JetBrains Mono">Busur AB</text>
+            <text x="262" y="205" font-size="11" fill="#0ea5e9" font-family="JetBrains Mono">Tali Busur</text>
+            <text x="238" y="280" font-size="11" fill="#1d4ed8" font-family="JetBrains Mono">Juring</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ 5. GARIS SINGGUNG ══════════ -->
+  <section class="section" id="garis-singgung">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <span class="sec-num">05</span>
+        <div>
+          <span class="sec-tag">Bagian Kelima</span>
+          <h2>Garis Singgung<br><em>Dua Lingkaran</em></h2>
+        </div>
+      </div>
+
+      <div class="layout-visual">
+        <!-- SVG -->
+        <div class="visual-wrap reveal">
+          <svg class="circle-svg" viewBox="0 0 420 320" fill="none">
+            <!-- Circle besar -->
+            <circle cx="130" cy="160" r="100" fill="#f0f7ff" stroke="#3b82f6" stroke-width="1.5"/>
+            <!-- Circle kecil -->
+            <circle cx="320" cy="160" r="60" fill="#f0f7ff" stroke="#3b82f6" stroke-width="1.5"/>
+            <!-- GSPL top -->
+            <line x1="80" y1="64" x2="288" y2="103" stroke="#2563eb" stroke-width="2"/>
+            <!-- GSPL bottom -->
+            <line x1="80" y1="256" x2="288" y2="217" stroke="#2563eb" stroke-width="2"/>
+            <!-- GSPD -->
+            <line x1="175" y1="62" x2="264" y2="217" stroke="#0ea5e9" stroke-width="2" stroke-dasharray="5 3"/>
+            <line x1="175" y1="258" x2="264" y2="103" stroke="#0ea5e9" stroke-width="2" stroke-dasharray="5 3"/>
+            <!-- Distance line -->
+            <line x1="130" y1="160" x2="320" y2="160" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+            <!-- Centers -->
+            <circle cx="130" cy="160" r="4" fill="#2563eb"/>
+            <circle cx="320" cy="160" r="4" fill="#2563eb"/>
+            <!-- Labels -->
+            <text x="118" y="173" font-size="11" fill="#1d4ed8" font-family="JetBrains Mono">P₁ (R)</text>
+            <text x="308" y="173" font-size="11" fill="#1d4ed8" font-family="JetBrains Mono">P₂ (r)</text>
+            <text x="195" y="153" font-size="10" fill="#64748b" font-family="JetBrains Mono">j</text>
+            <text x="55" y="55" font-size="10" fill="#2563eb" font-family="JetBrains Mono">GSPL</text>
+            <text x="155" y="42" font-size="10" fill="#0ea5e9" font-family="JetBrains Mono">GSPD</text>
+          </svg>
+        </div>
+
+        <div class="content-stack">
+          <div class="formula-block reveal delay-1">
+            <div class="fb-header">GSPL — Garis Singgung Persekutuan Luar</div>
+            <div class="fb-formula">GSPL = √(j² − (R−r)²)</div>
+            <p class="fb-note">Tidak menyilang. Berada di sisi luar kedua lingkaran.</p>
+          </div>
+          <div class="formula-block reveal delay-2">
+            <div class="fb-header">GSPD — Garis Singgung Persekutuan Dalam</div>
+            <div class="fb-formula">GSPD = √(j² − (R+r)²)</div>
+            <p class="fb-note">Menyilang di antara kedua lingkaran.</p>
+          </div>
+          <div class="var-table reveal delay-3">
+            <div class="vt-row"><span>j</span><span>Jarak antar pusat lingkaran</span></div>
+            <div class="vt-row"><span>R</span><span>Jari-jari lingkaran besar</span></div>
+            <div class="vt-row"><span>r</span><span>Jari-jari lingkaran kecil</span></div>
+          </div>
+          <div class="example-box reveal delay-4">
+            <span class="ex-tag">Contoh</span>
+            <p>j = 26, R = 15, r = 5<br>
+            GSPL = √(676 − 100) = √576 = <strong>24 cm</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ 6. LATIHAN SOAL ══════════ -->
+  <section class="section section-alt" id="latihan">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <span class="sec-num">06</span>
+        <div>
+          <span class="sec-tag">Latihan Soal</span>
+          <h2>20 Soal Pilihan<br><em>Ganda</em></h2>
+        </div>
+      </div>
+
+      <p class="lead-text reveal">Klik pilihan jawaban untuk memeriksa. Kunci jawaban tersedia di bawah setiap soal setelah dipilih.</p>
+
+      <!-- SOAL REGULER -->
+      <h3 class="soal-group-title reveal">Soal Reguler (1–15)</h3>
+      <div class="quiz-grid" id="quiz-grid"></div>
+
+      <!-- SOAL CERITA -->
+      <h3 class="soal-group-title reveal" style="margin-top:3rem">Soal Cerita — Konteks Sistem Informasi (16–20)</h3>
+      <div class="quiz-grid" id="quiz-grid-story"></div>
+    </div>
+  </section>
+
+  <!-- ══════════ ABOUT ══════════ -->
+  <section class="section" id="about">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <span class="sec-num">07</span>
+        <div>
+          <span class="sec-tag">Tentang Kami</span>
+          <h2>About<br><em>Me</em></h2>
+        </div>
+      </div>
+
+      <div class="about-grid">
+        <!-- Card — Hanin Maryam Khairunnisa -->
+        <div class="about-card reveal delay-1">
+          <div class="ac-avatar ac-h">
+            <img src="Hanin.jpeg" alt="Foto Hanin Maryam Khairunnisa" class="ac-photo" />
+            <div class="ac-ring"></div>
+          </div>
+          <div class="ac-info">
+            <h3>Hanin Maryam Khairunnisa</h3>
+            <p class="ac-role">Sistem Informasi Jaringan &amp; Aplikasi</p>
+            <div class="ac-tags">
+              <span>No. Presensi 17</span>
+              <span>XI SIJA 2</span>
+            </div>
+            <p class="ac-desc">Siswi kelas XI SIJA 2 SMK Negeri 7 Semarang. Tertarik pada pemrograman, desain sistem, dan teknologi informasi.</p>
+          </div>
+        </div>
+
+        <!-- School info -->
+        <div class="about-school reveal delay-3">
+          <div class="as-logo">
+            <svg viewBox="0 0 60 60" fill="none">
+              <circle cx="30" cy="30" r="28" stroke="#2563eb" stroke-width="1.5"/>
+              <circle cx="30" cy="30" r="18" stroke="#2563eb" stroke-width="1" opacity="0.5"/>
+              <circle cx="30" cy="30" r="4" fill="#2563eb"/>
+              <line x1="30" y1="2" x2="30" y2="30" stroke="#2563eb" stroke-width="1.2"/>
+              <line x1="58" y1="30" x2="30" y2="30" stroke="#2563eb" stroke-width="1.2"/>
+            </svg>
+          </div>
+          <div>
+            <h3>SMK Negeri 7 Semarang</h3>
+            <p>Program Keahlian Sistem Informasi Jaringan &amp; Aplikasi</p>
+            <p style="margin-top:0.5rem;color:#64748b;font-size:0.85rem">Tahun Ajaran 2024 / 2025 · Kelas XI SIJA 2</p>
+            <p style="margin-top:1rem;color:#475569;font-size:0.9rem;line-height:1.7">
+              Website ini dibuat sebagai bagian dari tugas pembelajaran materi Geometri Lingkaran, menggabungkan pemahaman matematika dengan kemampuan teknologi informasi.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="fi-brand">
+        <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="13" stroke="#2563eb" stroke-width="1.5"/>
+          <circle cx="16" cy="16" r="2" fill="#2563eb"/>
+          <line x1="16" y1="3" x2="16" y2="16" stroke="#2563eb" stroke-width="1.5"/>
+        </svg>
+        <span>Geometri Lingkaran</span>
+      </div>
+      <p>XI SIJA 2 · SMK Negeri 7 Semarang · 2024/2025</p>
+      <p class="fi-credit">Hanin Maryam K.</p>
+    </div>
+  </footer>
+
+  <script src="script6.js"></script>
+</body>
+</html>
